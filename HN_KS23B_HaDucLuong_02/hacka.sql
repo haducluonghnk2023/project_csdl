@@ -1,11 +1,11 @@
 
 create database room_management;
 use room_management;
-create table customer (
-	customer_id char(10) primary key ,
-    customer_full_name varchar(150) not null,
-    customer_email varchar(255) unique,
-    customer_address varchar(255) not null
+CREATE TABLE customer (
+    customer_id CHAR(10) PRIMARY KEY,
+    customer_full_name VARCHAR(150) NOT NULL,
+    customer_email VARCHAR(255) UNIQUE,
+    customer_address VARCHAR(255) NOT NULL
 );
 create table room(
 	room_id varchar(10) primary key ,
