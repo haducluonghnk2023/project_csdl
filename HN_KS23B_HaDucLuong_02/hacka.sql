@@ -1,3 +1,4 @@
+
 create database room_management;
 use room_management;
 create table customer (
@@ -192,6 +193,8 @@ begin
     end if;
 end &&
 DELIMITER &&
+alter table booking
+drop foreign key booking_ibfk_1;
 insert into booking(customer_id,room_id,check_in_date,check_out_date,total_amount) values
 ('C00100','R003','2025-03-16','2025-03-05','400.0'); -- lỗi 
 -- 6.2 Hãy tạo một trigger có tên là update_room_status_on_booking để tự động cập nhật trạng thái phòng thành "Booked" 
@@ -235,9 +238,10 @@ begin
 	if not exists (select 1 FROM Booking WHERE booking_id = p_booking_id) then
        signal sqlstate '45000' set message_text= 'Booking ID không tồn tại';
     end if;
-    insert into Payment (booking_id, payment_method, payment_amount, payment_date)
-    values (p_booking_id, p_payment_method, p_payment_amount, p_payment_date);
-    select 'Thanh toán đã được thêm thành công' as message;
+    insert into Payment (booking_id, payment_method, payment_amount, payment_date) values 
+    (p_booking_id, p_payment_method, p_payment_amount, p_payment_date);
+    select 'Thanh toán được thêm thành công' as message;
 end &&
 DELIMITER 
 call add_payment(8,'Cash','2025-03-16','800');
+select * from payment;
