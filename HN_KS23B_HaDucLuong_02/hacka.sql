@@ -1,4 +1,3 @@
-
 create database room_management;
 use room_management;
 CREATE TABLE customer (
@@ -9,7 +8,7 @@ CREATE TABLE customer (
 );
 create table room(
 	room_id varchar(10) primary key ,
-    room_price decimal ,
+    room_price decimal,
     room_status enum('Trống','Đã đặt'),
     room_area int 
 );
@@ -244,4 +243,4 @@ begin
 end &&
 DELIMITER 
 call add_payment(8,'Cash','2025-03-16','800');
-select * from payment;
+select * from payment;	
